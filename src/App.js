@@ -13,9 +13,7 @@ import {
   Modal,
   useMediaQuery,
   useTheme,
-  Menu,
   MenuItem,
-  IconButton
 } from "@mui/material";
 import { Link as ScrollLink, Element } from "react-scroll";
 import emailjs from "@emailjs/browser";
