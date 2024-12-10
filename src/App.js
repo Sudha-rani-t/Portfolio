@@ -30,6 +30,7 @@ import SQL from "./assests/sql.png";
 import GIT from "./assests/git.jpeg";
 import OUP from "./assests/oup.png";
 import ONLINE from "./assests/online.jpg";
+import CTS from "./assests/cts.jpg";
 
 const App = () => {
   const theme = useTheme();
@@ -144,6 +145,7 @@ const App = () => {
       designation: "Developer",
       years: "3 Years",
       duration: "Dec-2021 → May-2024",
+      companyImage: CTS,
     },
   ];
 
@@ -189,86 +191,95 @@ const App = () => {
       }}
     >
       {/* Fixed Menu Bar */}
-      <AppBar position="fixed" sx={{ backgroundColor: "#111", boxShadow: "none" }}>
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1, fontSize: "30px" }}>
-          PORTFOLIO
-        </Typography>
+      <AppBar
+        position="fixed"
+        sx={{ backgroundColor: "#111", boxShadow: "none" }}
+      >
+        <Toolbar>
+          <Typography variant="h6" sx={{ flexGrow: 1, fontSize: "30px" }}>
+            PORTFOLIO
+          </Typography>
 
-        {isMobile ? (
-          <>
-            {/* Custom Hamburger Menu */}
-            <div
-              onClick={handleMenuToggle}
-              style={{
-                cursor: "pointer",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                height: "20px",
-                width: "30px",
-              }}
-            >
-              <span style={{ background: "#fff", height: "3px", width: "100%" }}></span>
-              <span style={{ background: "#fff", height: "3px", width: "100%" }}></span>
-              <span style={{ background: "#fff", height: "3px", width: "100%" }}></span>
-            </div>
-
-            {/* Dropdown Menu */}
-            {menuOpen && (
+          {isMobile ? (
+            <>
+              {/* Custom Hamburger Menu */}
               <div
+                onClick={handleMenuToggle}
                 style={{
-                  position: "absolute",
-                  top: "50px",
-                  right: "10px",
-                  backgroundColor: "#333",
-                  borderRadius: "5px",
-                  zIndex: 10,
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  height: "20px",
+                  width: "30px",
                 }}
               >
-                {menuItems.map((item) => (
-                  <MenuItem
-                    key={item.to}
-                    onClick={handleMenuClose}
-                    sx={{
-                      color: "#fff",
-                      "&:hover": {
-                        backgroundColor: "#555",
-                      },
-                    }}
-                  >
-                    <ScrollLink
-                      to={item.to}
-                      smooth={true}
-                      duration={500}
-                      offset={-70}
-                      style={{ textDecoration: "none", color: "inherit" }}
-                    >
-                      {item.label}
-                    </ScrollLink>
-                  </MenuItem>
-                ))}
+                <span
+                  style={{ background: "#fff", height: "3px", width: "100%" }}
+                ></span>
+                <span
+                  style={{ background: "#fff", height: "3px", width: "100%" }}
+                ></span>
+                <span
+                  style={{ background: "#fff", height: "3px", width: "100%" }}
+                ></span>
               </div>
-            )}
-          </>
-        ) : (
-          menuItems.map((item) => (
-            <ScrollLink
-              key={item.to}
-              to={item.to}
-              smooth={true}
-              duration={500}
-              offset={-70}
-              style={{ textDecoration: "none" }}
-            >
-              <Button color="inherit" style={{ paddingLeft: "15px" }}>
-                {item.label}
-              </Button>
-            </ScrollLink>
-          ))
-        )}
-      </Toolbar>
-    </AppBar>
+
+              {/* Dropdown Menu */}
+              {menuOpen && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50px",
+                    right: "10px",
+                    backgroundColor: "#333",
+                    borderRadius: "5px",
+                    zIndex: 10,
+                  }}
+                >
+                  {menuItems.map((item) => (
+                    <MenuItem
+                      key={item.to}
+                      onClick={handleMenuClose}
+                      sx={{
+                        color: "#fff",
+                        "&:hover": {
+                          backgroundColor: "#555",
+                        },
+                      }}
+                    >
+                      <ScrollLink
+                        to={item.to}
+                        smooth={true}
+                        duration={500}
+                        offset={-70}
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        {item.label}
+                      </ScrollLink>
+                    </MenuItem>
+                  ))}
+                </div>
+              )}
+            </>
+          ) : (
+            menuItems.map((item) => (
+              <ScrollLink
+                key={item.to}
+                to={item.to}
+                smooth={true}
+                duration={500}
+                offset={-70}
+                style={{ textDecoration: "none" }}
+              >
+                <Button color="inherit" style={{ paddingLeft: "15px" }}>
+                  {item.label}
+                </Button>
+              </ScrollLink>
+            ))
+          )}
+        </Toolbar>
+      </AppBar>
 
       <Container
         maxWidth="lg"
@@ -276,117 +287,116 @@ const App = () => {
       >
         {/* Home Section */}
         <Box
-  sx={{
-    padding: "80px 20px", 
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }}
-  id="home"
->
-  <Container
-    maxWidth="lg"
-    sx={{
-      display: "flex",
-      flexDirection: { xs: "column", md: "row" }, 
-      alignItems: "center",
-      justifyContent: "space-between",
-    }}
-  >
-    {/* Right Side: Photo */}
-    <Box
-      sx={{
-        flex: 1,
-        order: { xs: 1, md: 2 }, 
-        display: "flex",
-        justifyContent: "center", 
-        padding: { xs: "0 0 20px 0", md: "0 40px 0 0" }, 
-      }}
-    >
-      <img
-        src={sudha}
-        alt="Sudha"
-        style={{
-          borderRadius: "10%",
-          width: "100%", 
-          maxWidth: "350px", 
-          height: "auto", 
-          objectFit: "cover",
-          border: "5px solid #fff",
-        }}
-      />
-    </Box>
-
-    {/* Left Side: Name and Designation */}
-    <Box
-      sx={{
-        flex: 1,
-        order: { xs: 2, md: 1 }, 
-        textAlign: { xs: "left", md: "left" },
-        padding: { xs: "10px", md: "20px" }, 
-      }}
-    >
-      <Typography
-        variant="h4" 
-        component="h1"
-        gutterBottom
-        sx={{
-          animation: "fadeInDown 1s ease-in-out",
-          fontFamily: "'Roboto Slab', serif",
-          fontSize: { xs: "28px", sm: "34px", md: "40px" }, 
-        }}
-      >
-        Sudha Rani
-      </Typography>
-      <Typography
-        variant="h5" 
-        component="h2"
-        gutterBottom
-        sx={{
-          animation: "fadeInUp 1.5s ease-in-out",
-          fontFamily: "'Roboto Slab', serif",
-          fontSize: { xs: "20px", sm: "24px", md: "28px" }, 
-        }}
-      >
-        Frontend Developer
-      </Typography>
-      <Typography
-        variant="body1"
-        sx={{
-          animation: "fadeIn 2s ease-in-out",
-          fontFamily: "'Roboto', sans-serif",
-          marginBottom: "20px",
-          fontSize: { xs: "14px", sm: "16px", md: "18px" }, 
-        }}
-      >
-        I have 3 years of experience building and designing software. Currently, I love to work on web applications using technologies like React, Next.js.
-      </Typography>
-      <a
-        href={resume}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          textDecoration: "none",
-        }}
-      >
-        <Button
-          variant="contained"
           sx={{
-            backgroundColor: "#444",
-            color: "#fff",
-            padding: { xs: "8px 16px", md: "10px 20px" }, 
-            fontSize: { xs: "12px", md: "16px" }, 
+            padding: "80px 20px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
+          id="home"
         >
-          Get Resume
-        </Button>
-      </a>
-    </Box>
-  </Container>
-</Box>
+          <Container
+            maxWidth="lg"
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            {/* Right Side: Photo */}
+            <Box
+              sx={{
+                flex: 1,
+                order: { xs: 1, md: 2 },
+                display: "flex",
+                justifyContent: "center",
+                padding: { xs: "0 0 20px 0", md: "0 40px 0 0" },
+              }}
+            >
+              <img
+                src={sudha}
+                alt="Sudha"
+                style={{
+                  borderRadius: "10%",
+                  width: "100%",
+                  maxWidth: "350px",
+                  height: "auto",
+                  objectFit: "cover",
+                  border: "5px solid #fff",
+                }}
+              />
+            </Box>
 
-
-
+            {/* Left Side: Name and Designation */}
+            <Box
+              sx={{
+                flex: 1,
+                order: { xs: 2, md: 1 },
+                textAlign: { xs: "left", md: "left" },
+                padding: { xs: "10px", md: "20px" },
+              }}
+            >
+              <Typography
+                variant="h4"
+                component="h1"
+                gutterBottom
+                sx={{
+                  animation: "fadeInDown 1s ease-in-out",
+                  fontFamily: "'Roboto Slab', serif",
+                  fontSize: { xs: "28px", sm: "34px", md: "40px" },
+                }}
+              >
+                Sudha Rani
+              </Typography>
+              <Typography
+                variant="h5"
+                component="h2"
+                gutterBottom
+                sx={{
+                  animation: "fadeInUp 1.5s ease-in-out",
+                  fontFamily: "'Roboto Slab', serif",
+                  fontSize: { xs: "20px", sm: "24px", md: "28px" },
+                }}
+              >
+                Frontend Developer
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  animation: "fadeIn 2s ease-in-out",
+                  fontFamily: "'Roboto', sans-serif",
+                  marginBottom: "20px",
+                  fontSize: { xs: "14px", sm: "16px", md: "18px" },
+                }}
+              >
+                I have 3 years of experience building and designing software.
+                Currently, I love to work on web applications using technologies
+                like React, Next.js.
+              </Typography>
+              <a
+                href={resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  textDecoration: "none",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#444",
+                    color: "#fff",
+                    padding: { xs: "8px 16px", md: "10px 20px" },
+                    fontSize: { xs: "12px", md: "16px" },
+                  }}
+                >
+                  Get Resume
+                </Button>
+              </a>
+            </Box>
+          </Container>
+        </Box>
 
         {/* About Section */}
         <Container
@@ -588,32 +598,159 @@ const App = () => {
                       display: "flex",
                       alignItems: "center",
                       marginBottom: "40px",
+                      position: "relative", 
                     }}
                   >
-                    <Card
+                    {/* Image on the left */}
+                    <Box
                       sx={{
-                        flex: 1,
-                        backgroundColor: "#2C3E50",
-                        color: "#fff",
-                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-                        borderRadius: "10px",
+                        width: "100px", 
+                        height: "100px",
+                        marginRight: "20px",
                       }}
                     >
-                      <CardContent>
-                        <Typography variant="h6">{experience.title}</Typography>
-                        <Typography variant="body2">
-                          {experience.designation}
-                        </Typography>
-                        <Typography variant="body2">
-                          {experience.years}
-                        </Typography>
-                        <Typography variant="body2">
-                          {experience.duration}
-                        </Typography>
-                      </CardContent>
-                    </Card>
+                      <img
+                        src={experience.companyImage} 
+                        alt={`${experience.title} logo`}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain", 
+                          borderRadius: "5px",
+                        }}
+                      />
+                    </Box>
+
+                    {/* Card content */}
+                    <CardContent sx={{ flex: 1, paddingBottom: "20px" }}>
+                      <Typography variant="h6">{experience.title}</Typography>
+                      <Typography variant="body2">
+                        {experience.designation}
+                      </Typography>
+                      <Typography variant="body2">
+                        {experience.years}
+                      </Typography>
+                      <Typography variant="body2">
+                        {experience.duration}
+                      </Typography>
+                    </CardContent>
                   </Box>
                 ))}
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginBottom: "40px",
+                    position: "relative", 
+                  }}
+                >
+                  {/* Image on the left */}
+                  <Box
+                    sx={{
+                      marginLeft: "50px",
+                      transform: "translateX(-50%)", 
+                      width: "10px", 
+                      height: "10px",
+                      backgroundColor: "#fff", 
+                      borderRadius: "50%", 
+                    }}
+                  ></Box>
+
+                  {/* Card content */}
+                  <CardContent
+                    sx={{ flex: 1, paddingBottom: "20px", marginLeft: "60px" }}
+                  >
+                    <Typography variant="h6">Associate</Typography>
+                    <Typography variant="body2">
+                      Jan 2024 - May 2024 
+                    </Typography>
+                  </CardContent>
+                </Box>
+
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "333px",
+                    left: "69px", 
+                    width: "2px",
+                    height: "14%",
+                    backgroundColor: "#444",
+                  }}
+                ></Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginBottom: "40px",
+                    position: "relative", 
+                  }}
+                >
+                  {/* Image on the left */}
+                  <Box
+                    sx={{
+                      marginLeft: "50px",
+                      transform: "translateX(-50%)",
+                      width: "10px", 
+                      height: "10px",
+                      backgroundColor: "#fff", 
+                      borderRadius: "50%", 
+                    }}
+                  ></Box>
+
+                  {/* Card content */}
+                  <CardContent
+                    sx={{ flex: 1, paddingBottom: "20px", marginLeft: "60px" }}
+                  >
+                    <Typography variant="h6">Program Analyst</Typography>
+                    <Typography variant="body2">
+                      Jan 2023 - Dec 2023
+                    </Typography>
+                  </CardContent>
+                </Box>
+
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "465px",
+                    left: "69px", 
+                    width: "2px",
+                    height: "15%",
+                    backgroundColor: "#444",
+                  }}
+                ></Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginBottom: "40px",
+                    position: "relative", 
+                  }}
+                >
+                  {/* Image on the left */}
+                  <Box
+                    sx={{
+                      marginLeft: "50px",
+                      transform: "translateX(-50%)", 
+                      width: "10px", 
+                      height: "10px",
+                      backgroundColor: "#fff", 
+                      borderRadius: "50%", 
+                    }}
+                  ></Box>
+
+                  {/* Card content */}
+                  <CardContent
+                    sx={{ flex: 1, paddingBottom: "20px", marginLeft: "60px" }}
+                  >
+                    <Typography variant="h6">
+                      Program Analyst Traniee
+                    </Typography>
+                    <Typography variant="body2">Dec 2021 - Dec 2022</Typography>
+                  </CardContent>
+                </Box>
               </Box>
             </Box>
           </Container>
@@ -627,7 +764,7 @@ const App = () => {
             alignItems: "center",
           }}
         >
-          <Box sx={{ padding: "20px 10px" }} id="projects">
+          <Box sx={{ padding: "10px 10px" }} id="projects">
             <Typography
               variant="h4"
               gutterBottom
@@ -636,7 +773,7 @@ const App = () => {
                 textUnderlineOffset: "5px",
                 textDecorationColor: "#444",
                 fontFamily: "'Roboto Slab', serif",
-                paddingBottom: "40px",
+                paddingBottom: "30px",
               }}
             >
               Projects
@@ -785,7 +922,7 @@ const App = () => {
               textUnderlineOffset: "5px",
               textDecorationColor: "#444",
               fontFamily: "'Roboto Slab', serif",
-              paddingBottom: "50px",
+              paddingBottom: "40px",
               alignSelf: "flex-start",
             }}
           >
@@ -796,7 +933,7 @@ const App = () => {
             sx={{
               width: "100%",
               maxWidth: "600px",
-              padding: "20px",
+              padding: "10px",
               borderRadius: "8px",
             }}
             id="contact"
