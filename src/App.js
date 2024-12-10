@@ -17,7 +17,6 @@ import {
   MenuItem,
   IconButton
 } from "@mui/material";
-// import MenuIcon from "@mui/icons-material/Menu";
 import { Link as ScrollLink, Element } from "react-scroll";
 import emailjs from "@emailjs/browser";
 import sudha from "./assests/sudha-img.jpg";
@@ -35,8 +34,6 @@ import OUP from "./assests/oup.png";
 import ONLINE from "./assests/online.jpg";
 
 const App = () => {
-
-  const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -282,7 +279,7 @@ const App = () => {
         {/* Home Section */}
         <Box
   sx={{
-    padding: "80px 20px", // Adjusted padding for responsiveness
+    padding: "80px 20px", 
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -293,7 +290,7 @@ const App = () => {
     maxWidth="lg"
     sx={{
       display: "flex",
-      flexDirection: { xs: "column", md: "row" }, // Stack in column for small screens
+      flexDirection: { xs: "column", md: "row" }, 
       alignItems: "center",
       justifyContent: "space-between",
     }}
@@ -302,10 +299,10 @@ const App = () => {
     <Box
       sx={{
         flex: 1,
-        order: { xs: 1, md: 2 }, // Image comes first for small screens
+        order: { xs: 1, md: 2 }, 
         display: "flex",
-        justifyContent: "center", // Center the image on small screens
-        padding: { xs: "0 0 20px 0", md: "0 40px 0 0" }, // Adjust padding
+        justifyContent: "center", 
+        padding: { xs: "0 0 20px 0", md: "0 40px 0 0" }, 
       }}
     >
       <img
@@ -313,9 +310,9 @@ const App = () => {
         alt="Sudha"
         style={{
           borderRadius: "10%",
-          width: "100%", // Full width for small screens
-          maxWidth: "350px", // Limit size for larger screens
-          height: "auto", // Maintain aspect ratio
+          width: "100%", 
+          maxWidth: "350px", 
+          height: "auto", 
           objectFit: "cover",
           border: "5px solid #fff",
         }}
@@ -326,31 +323,31 @@ const App = () => {
     <Box
       sx={{
         flex: 1,
-        order: { xs: 2, md: 1 }, // Content comes below image for small screens
+        order: { xs: 2, md: 1 }, 
         textAlign: { xs: "left", md: "left" },
-        padding: { xs: "10px", md: "20px" }, // Adjust padding
+        padding: { xs: "10px", md: "20px" }, 
       }}
     >
       <Typography
-        variant="h4" // Adjusted variant for better scaling
+        variant="h4" 
         component="h1"
         gutterBottom
         sx={{
           animation: "fadeInDown 1s ease-in-out",
           fontFamily: "'Roboto Slab', serif",
-          fontSize: { xs: "28px", sm: "34px", md: "40px" }, // Responsive font size
+          fontSize: { xs: "28px", sm: "34px", md: "40px" }, 
         }}
       >
         Sudha Rani
       </Typography>
       <Typography
-        variant="h5" // Adjusted variant for better scaling
+        variant="h5" 
         component="h2"
         gutterBottom
         sx={{
           animation: "fadeInUp 1.5s ease-in-out",
           fontFamily: "'Roboto Slab', serif",
-          fontSize: { xs: "20px", sm: "24px", md: "28px" }, // Responsive font size
+          fontSize: { xs: "20px", sm: "24px", md: "28px" }, 
         }}
       >
         Frontend Developer
@@ -361,7 +358,7 @@ const App = () => {
           animation: "fadeIn 2s ease-in-out",
           fontFamily: "'Roboto', sans-serif",
           marginBottom: "20px",
-          fontSize: { xs: "14px", sm: "16px", md: "18px" }, // Responsive font size
+          fontSize: { xs: "14px", sm: "16px", md: "18px" }, 
         }}
       >
         I have 3 years of experience building and designing software. Currently, I love to work on web applications using technologies like React, Next.js.
@@ -379,8 +376,8 @@ const App = () => {
           sx={{
             backgroundColor: "#444",
             color: "#fff",
-            padding: { xs: "8px 16px", md: "10px 20px" }, // Responsive button size
-            fontSize: { xs: "12px", md: "16px" }, // Responsive font size
+            padding: { xs: "8px 16px", md: "10px 20px" }, 
+            fontSize: { xs: "12px", md: "16px" }, 
           }}
         >
           Get Resume
