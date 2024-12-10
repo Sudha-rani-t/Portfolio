@@ -11,7 +11,13 @@ import {
   Card,
   CardContent,
   Modal,
+  useMediaQuery,
+  useTheme,
+  Menu,
+  MenuItem,
+  IconButton
 } from "@mui/material";
+// import MenuIcon from "@mui/icons-material/Menu";
 import { Link as ScrollLink, Element } from "react-scroll";
 import emailjs from "@emailjs/browser";
 import sudha from "./assests/sudha-img.jpg";
@@ -29,6 +35,29 @@ import OUP from "./assests/oup.png";
 import ONLINE from "./assests/online.jpg";
 
 const App = () => {
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
+  const handleMenuClose = () => {
+    setMenuOpen(false);
+  };
+  const menuItems = [
+    { label: "Home", to: "home" },
+    { label: "About", to: "about" },
+    { label: "Skills", to: "skills" },
+    { label: "Experience", to: "experience" },
+    { label: "Projects", to: "projects" },
+    { label: "Contact", to: "contact" },
+  ];
+
   const form = useRef();
   const [activeBox, setActiveBox] = useState("box1");
   const [activeProject, setActiveProject] = useState(null);
@@ -165,46 +194,86 @@ const App = () => {
       }}
     >
       {/* Fixed Menu Bar */}
-      <AppBar
-        position="fixed"
-        sx={{ backgroundColor: "#111", boxShadow: "none" }}
-      >
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1, fontSize: "30px" }}>
-            PORTFOLIO
-          </Typography>
-          <ScrollLink to="home" smooth={true} duration={500} offset={-70}>
-            <Button color="inherit" style={{ paddingLeft: "15px" }}>
-              Home
-            </Button>
-          </ScrollLink>
-          <ScrollLink to="about" smooth={true} duration={500} offset={-70}>
-            <Button color="inherit" style={{ paddingLeft: "15px" }}>
-              About
-            </Button>
-          </ScrollLink>
-          <ScrollLink to="skills" smooth={true} duration={500} offset={-70}>
-            <Button color="inherit" style={{ paddingLeft: "15px" }}>
-              Skills
-            </Button>
-          </ScrollLink>
-          <ScrollLink to="experience" smooth={true} duration={500} offset={-70}>
-            <Button color="inherit" style={{ paddingLeft: "15px" }}>
-              Experience
-            </Button>
-          </ScrollLink>
-          <ScrollLink to="projects" smooth={true} duration={500} offset={-70}>
-            <Button color="inherit" style={{ paddingLeft: "15px" }}>
-              Projects
-            </Button>
-          </ScrollLink>
-          <ScrollLink to="contact" smooth={true} duration={500} offset={-70}>
-            <Button color="inherit" style={{ paddingLeft: "15px" }}>
-              Contact
-            </Button>
-          </ScrollLink>
-        </Toolbar>
-      </AppBar>
+      <AppBar position="fixed" sx={{ backgroundColor: "#111", boxShadow: "none" }}>
+      <Toolbar>
+        <Typography variant="h6" sx={{ flexGrow: 1, fontSize: "30px" }}>
+          PORTFOLIO
+        </Typography>
+
+        {isMobile ? (
+          <>
+            {/* Custom Hamburger Menu */}
+            <div
+              onClick={handleMenuToggle}
+              style={{
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                height: "20px",
+                width: "30px",
+              }}
+            >
+              <span style={{ background: "#fff", height: "3px", width: "100%" }}></span>
+              <span style={{ background: "#fff", height: "3px", width: "100%" }}></span>
+              <span style={{ background: "#fff", height: "3px", width: "100%" }}></span>
+            </div>
+
+            {/* Dropdown Menu */}
+            {menuOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50px",
+                  right: "10px",
+                  backgroundColor: "#333",
+                  borderRadius: "5px",
+                  zIndex: 10,
+                }}
+              >
+                {menuItems.map((item) => (
+                  <MenuItem
+                    key={item.to}
+                    onClick={handleMenuClose}
+                    sx={{
+                      color: "#fff",
+                      "&:hover": {
+                        backgroundColor: "#555",
+                      },
+                    }}
+                  >
+                    <ScrollLink
+                      to={item.to}
+                      smooth={true}
+                      duration={500}
+                      offset={-70}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {item.label}
+                    </ScrollLink>
+                  </MenuItem>
+                ))}
+              </div>
+            )}
+          </>
+        ) : (
+          menuItems.map((item) => (
+            <ScrollLink
+              key={item.to}
+              to={item.to}
+              smooth={true}
+              duration={500}
+              offset={-70}
+              style={{ textDecoration: "none" }}
+            >
+              <Button color="inherit" style={{ paddingLeft: "15px" }}>
+                {item.label}
+              </Button>
+            </ScrollLink>
+          ))
+        )}
+      </Toolbar>
+    </AppBar>
 
       <Container
         maxWidth="lg"
@@ -212,108 +281,117 @@ const App = () => {
       >
         {/* Home Section */}
         <Box
-          sx={{
-            padding: "100px 0",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-          id="home"
-        >
-          <Container
-            maxWidth="lg"
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              alignItems: "center",
-            }}
-          >
-            {/* Left Side: Name and Designation */}
-            <Box
-              sx={{
-                flex: 1,
-                textAlign: { xs: "center", md: "left" },
-                padding: "20px",
-              }}
-            >
-              <Typography
-                variant="h2"
-                component="h1"
-                gutterBottom
-                sx={{
-                  animation: "fadeInDown 1s ease-in-out",
-                  fontFamily: "'Roboto Slab', serif",
-                }}
-              >
-                Sudha Rani
-              </Typography>
-              <Typography
-                variant="h4"
-                component="h2"
-                gutterBottom
-                sx={{
-                  animation: "fadeInUp 1.5s ease-in-out",
-                  fontFamily: "'Roboto Slab', serif",
-                }}
-              >
-                Frontend Developer
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  animation: "fadeIn 2s ease-in-out",
-                  fontFamily: "'Roboto', sans-serif",
-                  marginBottom: "20px",
-                }}
-              >
-                I have 3 years of experience building and designing software.
-                Currently, I love to work on web application using technologies
-                like React, Next JS.
-              </Typography>
-              <a
-                href={resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  textDecoration: "none",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#444",
-                    color: "#fff",
-                    padding: "10px 20px",
-                  }}
-                >
-                  Get Resume
-                </Button>
-              </a>
-            </Box>
+  sx={{
+    padding: "80px 20px", // Adjusted padding for responsiveness
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }}
+  id="home"
+>
+  <Container
+    maxWidth="lg"
+    sx={{
+      display: "flex",
+      flexDirection: { xs: "column", md: "row" }, // Stack in column for small screens
+      alignItems: "center",
+      justifyContent: "space-between",
+    }}
+  >
+    {/* Right Side: Photo */}
+    <Box
+      sx={{
+        flex: 1,
+        order: { xs: 1, md: 2 }, // Image comes first for small screens
+        display: "flex",
+        justifyContent: "center", // Center the image on small screens
+        padding: { xs: "0 0 20px 0", md: "0 40px 0 0" }, // Adjust padding
+      }}
+    >
+      <img
+        src={sudha}
+        alt="Sudha"
+        style={{
+          borderRadius: "10%",
+          width: "100%", // Full width for small screens
+          maxWidth: "350px", // Limit size for larger screens
+          height: "auto", // Maintain aspect ratio
+          objectFit: "cover",
+          border: "5px solid #fff",
+        }}
+      />
+    </Box>
 
-            {/* Right Side: Photo */}
-            <Box
-              sx={{
-                flex: 1,
-                display: "flex",
-                justifyContent: { xs: "center", md: "right" },
-                paddingRight: "120px",
-              }}
-            >
-              <img
-                src={sudha}
-                alt="Sudha"
-                style={{
-                  borderRadius: "10%",
-                  width: "350px",
-                  height: "350px",
-                  objectFit: "cover",
-                  border: "5px solid #fff",
-                }}
-              />
-            </Box>
-          </Container>
-        </Box>
+    {/* Left Side: Name and Designation */}
+    <Box
+      sx={{
+        flex: 1,
+        order: { xs: 2, md: 1 }, // Content comes below image for small screens
+        textAlign: { xs: "left", md: "left" },
+        padding: { xs: "10px", md: "20px" }, // Adjust padding
+      }}
+    >
+      <Typography
+        variant="h4" // Adjusted variant for better scaling
+        component="h1"
+        gutterBottom
+        sx={{
+          animation: "fadeInDown 1s ease-in-out",
+          fontFamily: "'Roboto Slab', serif",
+          fontSize: { xs: "28px", sm: "34px", md: "40px" }, // Responsive font size
+        }}
+      >
+        Sudha Rani
+      </Typography>
+      <Typography
+        variant="h5" // Adjusted variant for better scaling
+        component="h2"
+        gutterBottom
+        sx={{
+          animation: "fadeInUp 1.5s ease-in-out",
+          fontFamily: "'Roboto Slab', serif",
+          fontSize: { xs: "20px", sm: "24px", md: "28px" }, // Responsive font size
+        }}
+      >
+        Frontend Developer
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          animation: "fadeIn 2s ease-in-out",
+          fontFamily: "'Roboto', sans-serif",
+          marginBottom: "20px",
+          fontSize: { xs: "14px", sm: "16px", md: "18px" }, // Responsive font size
+        }}
+      >
+        I have 3 years of experience building and designing software. Currently, I love to work on web applications using technologies like React, Next.js.
+      </Typography>
+      <a
+        href={resume}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          textDecoration: "none",
+        }}
+      >
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: "#444",
+            color: "#fff",
+            padding: { xs: "8px 16px", md: "10px 20px" }, // Responsive button size
+            fontSize: { xs: "12px", md: "16px" }, // Responsive font size
+          }}
+        >
+          Get Resume
+        </Button>
+      </a>
+    </Box>
+  </Container>
+</Box>
+
+
+
 
         {/* About Section */}
         <Container
