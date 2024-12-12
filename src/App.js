@@ -33,7 +33,7 @@ import ONLINE from "./assests/online.jpg";
 import CTS from "./assests/cts.jpg";
 import {
   VerticalTimeline,
-  VerticalTimelineElement
+  VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
@@ -643,46 +643,49 @@ const App = () => {
                   </Box>
                 ))}
                 <VerticalTimeline>
-        <VerticalTimelineElement
-          className="vertical-timeline-element--work"
-          contentStyle={{ background: "#366", color: "#000" }}
-          contentArrowStyle={{ borderRight: "7px solid  #366" }}
-          iconStyle={{ background: "#fff" }}
-          icon={<WorkIcon />}
-        >
-          <h3 className="vertical-timeline-element-title">Programmer Analyst Traniee</h3>
-          <h4 className="vertical-timeline-element-subtitle">Dec 2021 - Dec 2022</h4>
-        </VerticalTimelineElement>
-        <VerticalTimelineElement
-          className="vertical-timeline-element--work"
-          contentStyle={{ background: "#366", color: "#000" }}
-          contentArrowStyle={{ borderRight: "7px solid  #366" }}
-          
-          iconStyle={{ background: "#fff" }}
-          icon={<WorkIcon />}
-        >
-          <h3 className="vertical-timeline-element-title">Programmer Analyst</h3>
-          <h4 className="vertical-timeline-element-subtitle">Dec 2022 - Jan 2024</h4>
-          
-        </VerticalTimelineElement>
-        <VerticalTimelineElement
-          className="vertical-timeline-element--work"
-          contentStyle={{ background: "#366", color: "#000" }}
-          contentArrowStyle={{ borderRight: "7px solid  #366" }}
-          
-          iconStyle={{ background: "#fff" }}
-          icon={<WorkIcon />}
-        >
-          <h3 className="vertical-timeline-element-title">Associate</h3>
-          <h4 className="vertical-timeline-element-subtitle">Jan 2024 - May 2024</h4>
-          <p>
-            Creative Direction, User Experience, Visual Design, Project
-            Management, Team Leading
-          </p>
-        </VerticalTimelineElement>
-        
-        
-      </VerticalTimeline>
+                  <VerticalTimelineElement
+                    className="vertical-timeline-element--work"
+                    contentStyle={{ background: "#366", color: "#000" }}
+                    contentArrowStyle={{ borderRight: "7px solid  #366" }}
+                    iconStyle={{ background: "#fff" }}
+                    icon={<WorkIcon />}
+                  >
+                    <h3 className="vertical-timeline-element-title">
+                      Programmer Analyst Traniee
+                    </h3>
+                    <h4 className="vertical-timeline-element-subtitle">
+                      Dec 2021 - Dec 2022
+                    </h4>
+                  </VerticalTimelineElement>
+                  <VerticalTimelineElement
+                    className="vertical-timeline-element--work"
+                    contentStyle={{ background: "#366", color: "#000" }}
+                    contentArrowStyle={{ borderRight: "7px solid  #366" }}
+                    iconStyle={{ background: "#fff" }}
+                    icon={<WorkIcon />}
+                  >
+                    <h3 className="vertical-timeline-element-title">
+                      Programmer Analyst
+                    </h3>
+                    <h4 className="vertical-timeline-element-subtitle">
+                      Dec 2022 - Jan 2024
+                    </h4>
+                  </VerticalTimelineElement>
+                  <VerticalTimelineElement
+                    className="vertical-timeline-element--work"
+                    contentStyle={{ background: "#366", color: "#000" }}
+                    contentArrowStyle={{ borderRight: "7px solid  #366" }}
+                    iconStyle={{ background: "#fff" }}
+                    icon={<WorkIcon />}
+                  >
+                    <h3 className="vertical-timeline-element-title">
+                      Associate
+                    </h3>
+                    <h4 className="vertical-timeline-element-subtitle">
+                      Jan 2024 - May 2024
+                    </h4>
+                  </VerticalTimelineElement>
+                </VerticalTimeline>
               </Box>
             </Box>
           </Container>
