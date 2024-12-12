@@ -31,7 +31,13 @@ import GIT from "./assests/git.jpeg";
 import OUP from "./assests/oup.png";
 import ONLINE from "./assests/online.jpg";
 import CTS from "./assests/cts.jpg";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
+const WorkIcon = () => <></>;
 const App = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -598,159 +604,85 @@ const App = () => {
                       display: "flex",
                       alignItems: "center",
                       marginBottom: "40px",
-                      position: "relative", 
+                      position: "relative",
                     }}
                   >
                     {/* Image on the left */}
                     <Box
                       sx={{
-                        width: "100px", 
+                        width: "150px",
                         height: "100px",
                         marginRight: "20px",
                       }}
                     >
                       <img
-                        src={experience.companyImage} 
+                        src={experience.companyImage}
                         alt={`${experience.title} logo`}
                         style={{
                           width: "100%",
-                          height: "100%",
-                          objectFit: "contain", 
+                          height: "150%",
+                          objectFit: "contain",
                           borderRadius: "5px",
                         }}
                       />
                     </Box>
 
                     {/* Card content */}
-                    <CardContent sx={{ flex: 1, paddingBottom: "20px" }}>
-                      <Typography variant="h6">{experience.title}</Typography>
-                      <Typography variant="body2">
+                    <CardContent sx={{ flex: 1, marginTop: "20px" }}>
+                      <Typography variant="h5">{experience.title}</Typography>
+                      <Typography variant="body1">
                         {experience.designation}
                       </Typography>
-                      <Typography variant="body2">
+                      <Typography variant="body1">
                         {experience.years}
                       </Typography>
-                      <Typography variant="body2">
+                      <Typography variant="body1">
                         {experience.duration}
                       </Typography>
                     </CardContent>
                   </Box>
                 ))}
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: "40px",
-                    position: "relative", 
-                  }}
-                >
-                  {/* Image on the left */}
-                  <Box
-                    sx={{
-                      marginLeft: "50px",
-                      transform: "translateX(-50%)", 
-                      width: "10px", 
-                      height: "10px",
-                      backgroundColor: "#fff", 
-                      borderRadius: "50%", 
-                    }}
-                  ></Box>
-
-                  {/* Card content */}
-                  <CardContent
-                    sx={{ flex: 1, paddingBottom: "20px", marginLeft: "60px" }}
-                  >
-                    <Typography variant="h6">Associate</Typography>
-                    <Typography variant="body2">
-                      Jan 2024 - May 2024 
-                    </Typography>
-                  </CardContent>
-                </Box>
-
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "333px",
-                    left: "69px", 
-                    width: "2px",
-                    height: "14%",
-                    backgroundColor: "#444",
-                  }}
-                ></Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: "40px",
-                    position: "relative", 
-                  }}
-                >
-                  {/* Image on the left */}
-                  <Box
-                    sx={{
-                      marginLeft: "50px",
-                      transform: "translateX(-50%)",
-                      width: "10px", 
-                      height: "10px",
-                      backgroundColor: "#fff", 
-                      borderRadius: "50%", 
-                    }}
-                  ></Box>
-
-                  {/* Card content */}
-                  <CardContent
-                    sx={{ flex: 1, paddingBottom: "20px", marginLeft: "60px" }}
-                  >
-                    <Typography variant="h6">Program Analyst</Typography>
-                    <Typography variant="body2">
-                      Jan 2023 - Dec 2023
-                    </Typography>
-                  </CardContent>
-                </Box>
-
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "465px",
-                    left: "69px", 
-                    width: "2px",
-                    height: "15%",
-                    backgroundColor: "#444",
-                  }}
-                ></Box>
-
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: "40px",
-                    position: "relative", 
-                  }}
-                >
-                  {/* Image on the left */}
-                  <Box
-                    sx={{
-                      marginLeft: "50px",
-                      transform: "translateX(-50%)", 
-                      width: "10px", 
-                      height: "10px",
-                      backgroundColor: "#fff", 
-                      borderRadius: "50%", 
-                    }}
-                  ></Box>
-
-                  {/* Card content */}
-                  <CardContent
-                    sx={{ flex: 1, paddingBottom: "20px", marginLeft: "60px" }}
-                  >
-                    <Typography variant="h6">
-                      Program Analyst Traniee
-                    </Typography>
-                    <Typography variant="body2">Dec 2021 - Dec 2022</Typography>
-                  </CardContent>
-                </Box>
+                <VerticalTimeline>
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          contentStyle={{ background: "#366", color: "#000" }}
+          contentArrowStyle={{ borderRight: "7px solid  #366" }}
+          iconStyle={{ background: "#fff" }}
+          icon={<WorkIcon />}
+        >
+          <h3 className="vertical-timeline-element-title">Programmer Analyst Traniee</h3>
+          <h4 className="vertical-timeline-element-subtitle">Dec 2021 - Dec 2022</h4>
+        </VerticalTimelineElement>
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          contentStyle={{ background: "#366", color: "#000" }}
+          contentArrowStyle={{ borderRight: "7px solid  #366" }}
+          
+          iconStyle={{ background: "#fff" }}
+          icon={<WorkIcon />}
+        >
+          <h3 className="vertical-timeline-element-title">Programmer Analyst</h3>
+          <h4 className="vertical-timeline-element-subtitle">Dec 2022 - Jan 2024</h4>
+          
+        </VerticalTimelineElement>
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          contentStyle={{ background: "#366", color: "#000" }}
+          contentArrowStyle={{ borderRight: "7px solid  #366" }}
+          
+          iconStyle={{ background: "#fff" }}
+          icon={<WorkIcon />}
+        >
+          <h3 className="vertical-timeline-element-title">Associate</h3>
+          <h4 className="vertical-timeline-element-subtitle">Jan 2024 - May 2024</h4>
+          <p>
+            Creative Direction, User Experience, Visual Design, Project
+            Management, Team Leading
+          </p>
+        </VerticalTimelineElement>
+        
+        
+      </VerticalTimeline>
               </Box>
             </Box>
           </Container>
