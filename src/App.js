@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '@mui/material';
-import { Element } from 'react-scroll'; // Element is used to identify scrollable sections
+import { Element } from 'react-scroll';
 
 import MenuBar from './components/menuBar.js';
 import Home from './components/home.js';
