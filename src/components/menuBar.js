@@ -8,7 +8,7 @@ import {
   useTheme,
   MenuItem,
 } from "@mui/material";
-import { Link as ScrollLink, Element } from "react-scroll";
+import { Link as ScrollLink} from "react-scroll";
 
 const MenuBar = () => {
   const theme = useTheme();
