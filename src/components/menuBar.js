@@ -1,37 +1,36 @@
-import React, { useState} from 'react'
+import React, { useState } from "react";
 import {
-    AppBar,
-    Toolbar,
-    Typography,
-    Button,
-    useMediaQuery,
-    useTheme,
-    MenuItem,
-  } from "@mui/material";
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  useMediaQuery,
+  useTheme,
+  MenuItem,
+} from "@mui/material";
 import { Link as ScrollLink, Element } from "react-scroll";
 
 const MenuBar = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-    const [menuOpen, setMenuOpen] = useState(false);
+  const handleMenuToggle = () => {
+    setMenuOpen((prev) => !prev);
+  };
 
-    const handleMenuToggle = () => {
-        setMenuOpen((prev) => !prev);
-      };
-    
-      const handleMenuClose = () => {
-        setMenuOpen(false);
-      };
-      const menuItems = [
-        { label: "Home", to: "home" },
-        { label: "About", to: "about" },
-        { label: "Skills", to: "skills" },
-        { label: "Experience", to: "experience" },
-        { label: "Projects", to: "projects" },
-        { label: "Contact", to: "contact" },
-      ];
-    
+  const handleMenuClose = () => {
+    setMenuOpen(false);
+  };
+  const menuItems = [
+    { label: "Home", to: "home" },
+    { label: "About", to: "about" },
+    { label: "Skills", to: "skills" },
+    { label: "Experience", to: "experience" },
+    { label: "Projects", to: "projects" },
+    { label: "Contact", to: "contact" },
+  ];
+
   return (
     <div>
       <AppBar
@@ -124,7 +123,7 @@ const MenuBar = () => {
         </Toolbar>
       </AppBar>
     </div>
-  )
-}
+  );
+};
 
-export default MenuBar
+export default MenuBar;

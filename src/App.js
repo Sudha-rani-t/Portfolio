@@ -1,22 +1,22 @@
-import React from 'react';
-import { Container } from '@mui/material';
-import { Element } from 'react-scroll';
+import React from "react";
+import { Container } from "@mui/material";
+import { Element } from "react-scroll";
 
-import MenuBar from './components/menuBar.js';
-import Home from './components/home.js';
-import About from './components/about.js';
-import Skill from './components/skill.js';
-import Experience from './components/experience.js';
-import Project from './components/project.js';
-import Contact from './components/contact.js';
+import MenuBar from "./components/menuBar.js";
+import Home from "./components/home.js";
+import About from "./components/about.js";
+import Skill from "./components/skill.js";
+import Experience from "./components/experience.js";
+import Project from "./components/project.js";
+import Contact from "./components/contact.js";
 
 const App = () => {
   return (
     <div
       style={{
-        backgroundColor: '#000',
-        color: '#fff',
-        minHeight: '100vh',
+        backgroundColor: "#000",
+        color: "#fff",
+        minHeight: "100vh",
         margin: 0,
         padding: 0,
       }}
@@ -24,9 +24,8 @@ const App = () => {
       <MenuBar />
       <Container
         maxWidth="lg"
-        sx={{ marginTop: '50px', paddingBottom: '40px' }}
+        sx={{ marginTop: "50px", paddingBottom: "40px" }}
       >
-        {/* Using Element for scrollable sections */}
         <Element name="home" className="element">
           <Home />
         </Element>
