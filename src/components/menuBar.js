@@ -8,7 +8,8 @@ import {
   useTheme,
   MenuItem,
 } from "@mui/material";
-import { Link as ScrollLink} from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+import { motion } from "framer-motion";
 
 const MenuBar = () => {
   const theme = useTheme();
@@ -22,6 +23,7 @@ const MenuBar = () => {
   const handleMenuClose = () => {
     setMenuOpen(false);
   };
+
   const menuItems = [
     { label: "Home", to: "home" },
     { label: "About", to: "about" },
@@ -31,14 +33,24 @@ const MenuBar = () => {
     { label: "Contact", to: "contact" },
   ];
 
+  // Animation variants
+  const menuVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.5, ease: "easeOut" },
+    }),
+  };
+
   return (
     <div>
       <AppBar
         position="fixed"
         sx={{ backgroundColor: "#111", boxShadow: "none" }}
       >
-        <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1, fontSize: "30px" }}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Typography variant="h6" sx={{ fontSize: "30px" }}>
             PORTFOLIO
           </Typography>
 
@@ -87,6 +99,7 @@ const MenuBar = () => {
                         color: "#fff",
                         "&:hover": {
                           backgroundColor: "#555",
+                          color: "#f0c040", // Change text color on hover
                         },
                       }}
                     >
@@ -105,20 +118,38 @@ const MenuBar = () => {
               )}
             </>
           ) : (
-            menuItems.map((item) => (
-              <ScrollLink
-                key={item.to}
-                to={item.to}
-                smooth={true}
-                duration={500}
-                offset={-70}
-                style={{ textDecoration: "none" }}
-              >
-                <Button color="inherit" style={{ paddingLeft: "15px" }}>
-                  {item.label}
-                </Button>
-              </ScrollLink>
-            ))
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              style={{ display: "flex", gap: "15px" }}
+            >
+              {menuItems.map((item, index) => (
+                <motion.div
+                  key={item.to}
+                  custom={index}
+                  variants={menuVariants}
+                >
+                  <ScrollLink
+                    to={item.to}
+                    smooth={true}
+                    duration={500}
+                    offset={-70}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Button
+                      color="inherit"
+                      sx={{
+                        "&:hover": {
+                          color: "#f0c040", // Change text color on hover
+                        },
+                      }}
+                    >
+                      {item.label}
+                    </Button>
+                  </ScrollLink>
+                </motion.div>
+              ))}
+            </motion.div>
           )}
         </Toolbar>
       </AppBar>
